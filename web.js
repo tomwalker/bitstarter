@@ -2,10 +2,14 @@ var fs = require('fs');
 
 var buff = new Buffer(8);
 
-fs.readFileSync('/index.html', function(err, data){
-	if (err) throw err;
-	buff.write(data);
-});
+// fs.readFileSync( this.dir + '/index.html', function(err, data){
+// 	if (err) throw err;
+// 	buff.write(data);
+// });
+
+var data = fs.readFileSync( this.dir + '/index.html');
+
+buff.write(data);
 
 var express = require('express');
 
