@@ -1,15 +1,6 @@
 var fs = require('fs');
 
-var buff = new Buffer(8);
-
-// fs.readFileSync( this.dir + '/index.html', function(err, data){
-// 	if (err) throw err;
-// 	buff.write(data);
-// });
-
 var data = fs.readFileSync('index.html', 'utf8');
-
-buff.write(data);
 
 var express = require('express');
 
