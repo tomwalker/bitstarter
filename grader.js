@@ -103,6 +103,7 @@ if(require.main == module) {
 //			console.log("printing after url check");
 			console.log(outJson);
 //			console.log("-------------------");
+			console.log(result.url);
 
 		});
 	}
