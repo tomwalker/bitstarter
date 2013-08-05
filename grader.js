@@ -21,12 +21,12 @@ References:
    - https://developer.mozilla.org/en-US/docs/JSON#JSON_in_Firefox_2
 */
 
-// var http = require('http');    was going to use this but went for restler instead
+
 var fs = require('fs');
 var program = require('commander');
 var cheerio = require('cheerio');
 var rest = require('restler');
-//var sleep = require('sleep');
+
 
 var HTMLFILE_DEFAULT = "index.html";
 var CHECKSFILE_DEFAULT = "checks.json";
@@ -96,14 +96,12 @@ if(require.main == module) {
         .option('-u, --url <url>', 'Url to index.html', clone(assertUrlExists), URL_DEFAULT)
         .parse(process.argv);
     if(program.url) {
-		rest.get(program.url).on('complete', function(result) {
-//			sleep.sleep(5);
+		rest.get(program.url).once('complete', function(result) {  // once used or two results are sent
+
 			var checkJson = checkUrl(result, program.checks);
 			var outJson = JSON.stringify(checkJson, null, 4);
-//			console.log("printing after url check");
+
 			console.log(outJson);
-//			console.log("-------------------");
-			console.log(result.url);
 
 		});
 	}
@@ -116,10 +114,6 @@ if(require.main == module) {
 } else {
     exports.checkHtmlFile = checkHtmlFile;
 }
-
-
-
-
 
 
 
